@@ -12,5 +12,3 @@ Session = sessionmaker(bind=engine)
 
 #Will be imported as session in other .py files
 session = Session()
-
-Base.metadata.create_all(engine)
