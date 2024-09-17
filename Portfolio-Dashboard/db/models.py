@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, NUMERIC, ForeignKey, Date
+from sqlalchemy import Column, Integer, String, NUMERIC, ForeignKey, DateTime, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+
 
 Base = declarative_base()
 '''
@@ -26,6 +27,7 @@ class Portfolio(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     name = Column(String, nullable=False)
+
     user = relationship("User", back_populates="portfolios")
     transactions = relationship("Transaction", back_populates="portfolio")
 
@@ -42,7 +44,8 @@ class Transaction(Base):
     asset_name = Column(String, nullable=False)
     amount = Column(NUMERIC(15,2), nullable=False)
     price = Column(NUMERIC(15,2), nullable=False)
-    transaction_date = Column(Date, nullable=False)
+    transaction_date = Column(DateTime, server_default=func.now(), nullable=False)
+
     asset_type = relationship("AssetType", back_populates="transactions")
     portfolio = relationship('Portfolio', back_populates='transactions')
 
@@ -66,7 +69,7 @@ class HistoricalData(Base):
     id = Column(Integer, primary_key=True)
     asset_name = Column(String, nullable=False)
     price = Column(NUMERIC(15,2), nullable=False)
-    date = Column(Date, nullable=False)
+    date = Column(DateTime, server_default=func.now(), nullable=False)
 
     def __repr__(self):
         return(f"<HistoricalData(id={self.id}, asset_name={self.asset_name}, "
