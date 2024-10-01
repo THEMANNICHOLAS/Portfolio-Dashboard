@@ -12,8 +12,8 @@ database.
 class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
-    username = Column(String, unique=True, nullable=False)
-    password = Column(String, nullable=False)
+    username = Column(String(80), unique=True, nullable=False)
+    password = Column(String(80), nullable=False)
     #When back-populating, make sure back_populates matches with the variable from the
     #relationship you are back-populating
     portfolios = relationship('Portfolio', back_populates='user')
