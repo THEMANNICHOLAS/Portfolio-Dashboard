@@ -37,6 +37,7 @@ def db_session(engine):
 
 
 def test_add_user(db_session):
+    """Test adding user to database using pytest fixture"""
     user = add_user('TEST_USER', "TEST_PASSWORD", db_session)
     assert user is not None
     assert user.username == 'TEST_USER'
