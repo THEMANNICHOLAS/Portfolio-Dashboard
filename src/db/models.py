@@ -41,7 +41,8 @@ class Transaction(Base):
     id = Column(Integer, primary_key=True) #primary key of transaction
     portfolio_id = Column(Integer, ForeignKey('portfolios.id'))
     asset_type_id = Column(Integer, ForeignKey('asset_types.id'))
-    asset_name = Column(String, nullable=False)
+    #asset_name = Column(String, nullable=False)   Will later be replaced by name of
+    #the asset and not asset type`
     amount = Column(NUMERIC(15,2), nullable=False)
     price = Column(NUMERIC(15,2), nullable=False)
     transaction_date = Column(DateTime, server_default=func.now(), nullable=False)
@@ -51,7 +52,7 @@ class Transaction(Base):
 
     def __repr__(self):
         return (f"<Transaction(id={self.id}, portfolio_id={self.portfolio_id}, "
-                f"asset_type_id={self.asset_type_id}, asset_name={self.asset_name}, "
+                f"asset_type_id={self.asset_type_id}, asset_type={self.asset_type}, "
                 f"amount={self.amount}, price={self.price}), transaction_date={self.transaction_date}>")
 
 class AssetType(Base):
