@@ -1,3 +1,5 @@
+from idlelib.pyparse import trans
+
 import pytest
 import sys
 import os
@@ -6,7 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql.functions import user
 
-from src.db.models import Base, User, Portfolio, AssetType
+from src.db.models import Base, User, Portfolio, AssetType, Transaction
 from src.db.database import add_user, add_portfolio, add_transaction, create_asset_type
 from datetime import datetime
 from dotenv import load_dotenv
@@ -64,6 +66,7 @@ def test_add_portfolio(db_session):
     portfolio = add_portfolio("TEST_PORTFOLIO", user.id, db_session)
     print(portfolio.__repr__) #Print representation of class ensuring members are not Null
     assert portfolio is not None
+    print(db_session.query(Portfolio).all())
 
 
 def test_establish_asset_types(db_session):
@@ -72,6 +75,30 @@ def test_establish_asset_types(db_session):
         create_asset_type(asset, db_session)
         assert asset in assets is not None
     print(db_session.query(AssetType).all())
+
+def test_add_transaction(db_session):
+
+    #Create assets first to test adding a transaction
+    assets = ["Stock", "Bond", "ETF", "Mutual Fund", "Crypto"]
+    for asset in assets:
+        create_asset_type(asset, db_session)
+    asset = db_session.query(AssetType.id).filter_by(name = "Crypto").scalar() #I will use crypto as an example
+    print(asset)
+
+    #Ensure user and portfolio exists before a transaction can be added
+    user1 = add_user("TEST_USER", "TEST_PASSWORD", db_session)
+    portfolio = add_portfolio("TEST_PORTFOLIO", user1.id, db_session)
+
+    currentTime = datetime.now()
+    transaction = add_transaction(portfolio.id, asset, 1, 90000, currentTime, db_session)
+    assert (transaction and
+            transaction.id and
+            transaction.portfolio_id and
+            transaction.asset_type and
+            transaction.asset_type_id and
+            transaction.price and
+            transaction.amount is not None)
+    print(transaction.__repr__)
 
 
 
