@@ -1,6 +1,8 @@
 # Portfolio-Dashboard
 A portfolio dashboard application to keep track of assets 
 
-Why this project?: Im currently trying to relearn Python and to also understand how databases work and how to queury them.
+Why this project?: Im currently trying to relearn Python and to also understand how databases work and how to query them.
 Im also extremely interested in the world of finance, so I figured this would be a great project that combines a passion
 of mine with my prospective future career.
+1/14/25 - I have also been integrating unit test using pycharm. This is good practice for me to learn how to test functionality
+
