@@ -25,7 +25,6 @@ def engine():
 
     #yield test_engine to DB transaction
     yield test_engine
-
     Base.metadata.drop_all(test_engine)
 
 
@@ -83,7 +82,7 @@ def test_add_transaction(db_session):
     for asset in assets:
         create_asset_type(asset, db_session)
     asset = db_session.query(AssetType.id).filter_by(name = "Crypto").scalar() #I will use crypto as an example
-    print(asset)
+    print(asset) #Verify that it is printing 5 for Crypto ID
 
     #Ensure user and portfolio exists before a transaction can be added
     user1 = add_user("TEST_USER", "TEST_PASSWORD", db_session)
