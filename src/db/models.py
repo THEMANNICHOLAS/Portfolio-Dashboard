@@ -41,8 +41,10 @@ class Transaction(Base):
     id = Column(Integer, primary_key=True) #primary key of transaction
     portfolio_id = Column(Integer, ForeignKey('portfolios.id'))
     asset_type_id = Column(Integer, ForeignKey('asset_types.id'))
-    #asset_name = Column(String, nullable=False)   Will later be replaced by name of
-    #the asset and not asset type`
+
+    #Will later be replaced by ticker the asset and not asset type or name
+    #ticker_symbol = Column(String, nullable=False)
+
     amount = Column(NUMERIC(15,2), nullable=False)
     price = Column(NUMERIC(15,2), nullable=False)
     transaction_date = Column(DateTime, server_default=func.now(), nullable=False)
