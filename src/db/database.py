@@ -2,17 +2,21 @@ from sqlalchemy import create_engine
 from datetime import datetime
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
-from models import User, Portfolio, Transaction, AssetType, HistoricalData
+from .models import User, Portfolio, AssetType, Transaction, HistoricalData
 from ..utility.security import hash_password
 import os
+from dotenv import load_dotenv
 import logging
 
-
+load_dotenv()
 logging.basicConfig(level=logging.INFO)
 
 #Creating and starting the database engine and session. Schema already made
 #using SQL commands in PostgreSQL
 DATABASE_URL = os.getenv('DB_URL')
+
+print(f"Database_URL: {DATABASE_URL}")
+
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 
@@ -84,6 +88,9 @@ def add_transaction(portfolio_id:int, asset_type_id:int,
     return None
 
 def add_historical_data(asset_name:str, price:float, date:datetime, session):
+    """Function to add historical data via API when later implemented
+    After user has added an asset with a ticker symbol
+    """
     historical_data = HistoricalData(asset_name=asset_name, price=price, date=date)
     session.add(historical_data)
 
