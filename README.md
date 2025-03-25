@@ -1,7 +1,7 @@
 # Portfolio-Dashboard
 [![OSF Scorecard](https://github.com/THEMANNICHOLAS/Portfolio-Dashboard/actions/workflows/scorecard.yml/badge.svg)](https://github.com/THEMANNICHOLAS/Portfolio-Dashboard/actions/workflows/scorecard.yml)
 
-[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/PROJECT_ID/badge)](https://bestpractices.coreinfrastructure.org/projects/PROJECT_ID)
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/10289/badge)](https://bestpractices.coreinfrastructure.org/projects/10289)
 
 ---
 A portfolio dashboard application to keep track of assets 
