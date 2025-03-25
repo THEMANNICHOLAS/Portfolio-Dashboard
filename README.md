@@ -11,3 +11,7 @@ Im also extremely interested in the world of finance, so I figured this would be
 of mine with my prospective future career.
 1/14/25 - I have also been integrating unit test using pycharm. This is good practice for me to learn how to test functionality
 
+---
+Contributions:
+Any contributions are more than welcomed. Feedback, bug reports, and enchancements can be made here on GitHub.
+
