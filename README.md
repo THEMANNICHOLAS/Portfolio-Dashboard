@@ -1,5 +1,8 @@
 # Portfolio-Dashboard
 [![OSF Scorecard](https://github.com/THEMANNICHOLAS/Portfolio-Dashboard/actions/workflows/scorecard.yml/badge.svg)](https://github.com/THEMANNICHOLAS/Portfolio-Dashboard/actions/workflows/scorecard.yml)
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/PROJECT_ID/badge)](https://bestpractices.coreinfrastructure.org/projects/PROJECT_ID)
+
+---
 A portfolio dashboard application to keep track of assets 
 
 Why this project?: Im currently trying to relearn Python and to also understand how databases work and how to query them.
